@@ -1,8 +1,10 @@
 const submit = document.querySelector(".submit");
 const inputField = document.querySelector(".input");
 const container = document.getElementById("inputs-container");
-
+const data = "значение инпута: [text]".replace("[text]", "slovo");
+console.log(data);
 const arr = [];
+" title ".trim() == "title";
 submit.addEventListener("click", handlerClick);
 inputField.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
@@ -38,11 +40,11 @@ function handlerClick() {
     saveButton.innerHTML = "Save";
     saveButton.classList.add("save-button");
     saveButton.addEventListener("click", () => {
-      console.log("Сохраненые значения: " + [arr]);
+      console.log("Сохраненые значения: " + arr);
     });
     const completed = document.createElement("input");
     completed.type = "checkbox";
-    completed.classList.add('checkbox');
+    completed.classList.add("checkbox");
     inputWrapper.appendChild(input);
     inputWrapper.appendChild(completed);
     inputWrapper.appendChild(saveButton); // Добавляем кнопку сохранения
@@ -50,3 +52,4 @@ function handlerClick() {
     container.appendChild(inputWrapper);
   }
 }
+//  localstorage.getitem(key) ? arr = localstorage.getitem(key) : []
