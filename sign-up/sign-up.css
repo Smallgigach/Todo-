@@ -218,6 +218,13 @@ body{
 .container.active .toggle-right{
   transform: translateX(200%);
 }
+.auth {
+  display: none;
+}
+.text {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
 @media  (max-width: 548px){
 
   .toggle-container {
@@ -228,20 +235,41 @@ body{
     width: 100%;
     z-index: 2;
   }
+  .sign-up {
+    width: 100%;
+  }
   .nonebtn {
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     flex-direction: column;
   }
   .create {
-    display: block;
+    display: flex;
     margin-top: 8px;
     font-size: 14px;
   }
   .form-container .sign-up {
-    max-width: 320px;
-    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
 
   }
+  .container.active .sign-up {
+    transform: none;
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+.create-acc {
+  text-align: center;
+}
+.auth {
+  display: block;
+}
+
 }

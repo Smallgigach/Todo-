@@ -6,7 +6,8 @@ const loginBtn = document.getElementById("login");
 const regInputName = document.querySelector(".name");
 const regInputEmail = document.querySelector(".email");
 const regInputPassw = document.querySelector(".password");
-const nonebtn = document.getElementById('nonebtn')
+const nonebtn = document.getElementById('nonebtn');
+const auth = document.querySelector('.auth')
 
 registerBtn.addEventListener("click", () => {
   container.classList.add("active");
@@ -40,4 +41,8 @@ nonebtn.addEventListener('click', (e) => {
   e.preventDefault()
   container.classList.add('active')
 
+})
+auth.addEventListener('click', (e) => {
+  e.preventDefault()
+  container.classList.add('active')
 })
