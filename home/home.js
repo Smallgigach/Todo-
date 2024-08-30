@@ -20,7 +20,6 @@ function getAllTask() {
 function addInput(text, id, bool) {
   const inputWrapper = document.createElement("div");
   inputWrapper.classList.toggle("input-wrapper"); 
-  inputWrapper.scrollIntoView()
   inputWrapper.key = id;
   const input = document.createElement("input");
   
@@ -29,7 +28,7 @@ function addInput(text, id, bool) {
   input.classList.add("input"); 
 
   const deleteButton = document.createElement("button");
-  deleteButton.innerHTML = "✖️"; 
+  deleteButton.innerHTML = "<i class='fa-solid fa-trash'></i>"; 
   deleteButton.classList.toggle("delete-button"); 
   deleteButton.addEventListener("click", () => {
     axios.post('https://todo.s7b0t4-website-server.ru/task/delete', {
@@ -44,9 +43,8 @@ function addInput(text, id, bool) {
     })
     container.removeChild(inputWrapper); 
   });
-
   const saveButton = document.createElement("button");
-  saveButton.innerHTML = "Save";
+  saveButton.innerHTML = "<i class='fa-solid fa-pen-to-square'></i>";
   saveButton.classList.add("save-button");
   saveButton.addEventListener("click", () => {
     axios
@@ -81,9 +79,9 @@ function addInput(text, id, bool) {
       });
   });
   inputWrapper.appendChild(input);
-  inputWrapper.appendChild(completed);
-  inputWrapper.appendChild(saveButton); // Добавляем кнопку сохранения
   inputWrapper.appendChild(deleteButton);
+  inputWrapper.appendChild(saveButton); // Добавляем кнопку сохранения
+  inputWrapper.appendChild(completed);
   container.appendChild(inputWrapper);
 }
 getAllTask();

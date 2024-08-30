@@ -43,7 +43,6 @@ body{
 .container a{
   color: #333;
   font-size: 13px;
-  text-decoration: none;
   margin: 15px 0 10px;
 }
 
@@ -224,9 +223,19 @@ body{
 .text {
   margin-top: 10px;
   margin-bottom: 0px;
+  display: none;
+}
+@media  (max-width: 770px){
+  body {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
 }
 @media  (max-width: 548px){
-
+  body {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
   .toggle-container {
     display: none;
   }
@@ -249,6 +258,7 @@ body{
     display: flex;
     margin-top: 8px;
     font-size: 14px;
+    color: #333;
   }
   .form-container .sign-up {
     width: 100%;
