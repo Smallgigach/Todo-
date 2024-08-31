@@ -13,6 +13,7 @@ const SignUpToPassword = document.querySelector(".sign-up_password");
 const SignUpToAdaptive = document.querySelector(".sign-up_remove");
 const SignInToAdaptive = document.querySelector(".sing-in_remove");
 const serverLink = 'https://todo.s7b0t4-website-server.ru/';
+const pageLink = 'https://todo-smallgigached.netlify.app/';
 signUpTransitToSignUpToReg.addEventListener("click", () => {
   container.classList.add("active");
 });
@@ -38,7 +39,7 @@ function SignInUser(e) {
     .then (async(response) => {
       await localStorage.clear()
       await localStorage.setItem('token', response.data.token)
-      window.location = `http://127.0.0.1:5500/home/home.html`;
+      window.location = pageLink + 'home/home.html';
     })
     .catch((err) => {
       console.log(err);
@@ -63,7 +64,7 @@ function SignUpUser(e) {
       await localStorage.clear()
       await localStorage.setItem('token', response.data.token)
       if (response.data.id) {
-        window.location = `http://127.0.0.1:5500/home/home.html`;
+        window.location = pageLink + `home/home.html`;
       }
       console.error('Не верный аккаунт');
     })
