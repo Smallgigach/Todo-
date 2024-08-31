@@ -17,11 +17,10 @@
     />
   </head>
   <body>
-    <div class="container" id='container'>
-      <div id="sign-up"></div>
-      <div class="form-container sign-up " id='sign-up'>
+    <div class="container">
+      <div class="form-container sign-up" >
         <form>
-          <h1 class='create-acc'>Create Account</h1>
+          <h1 class='create-acc_title'>Create Account</h1>
           <div class="social-icons">
             <a href="#" class="icon"
               ><i class="fa-brands fa-google-plus-g"></i
@@ -32,18 +31,17 @@
               ><i class="fa-brands fa-linkedin-in"></i
             ></a>
           </div>
-          <span>or use your email for registeration</span>
-          <input type="text" placeholder="Name" class='name' required/>
-          <input type="email" placeholder="Email" class='email' />
-          <input type="password" placeholder="Password"  class='password' required/>
-					<button id='reg' class='reg'>Sign Up</button>
-          <div class='text'>Enter Account</div>
-          <button class='auth'>Sign In</button>
+          <span>or use your email for registration</span>
+          <input type="text" placeholder="Name" class='sign-up_name' required/>
+          <input type="email" placeholder="Email" class='sign-up_email' />
+          <input type="password" placeholder="Password"  class='sign-up_password' required/>
+					<button  class='sign-up_button'>Sign Up</button>
+          <button class='sing-in_remove'>Sign In</button>
         </form>
       </div>
 			<div class="form-container sign-in">
         <form>
-          <h1>Sign In</h1>
+          <h1 class='sign-in_title'>Sign In</h1>
           <div class="social-icons">
             <a href="#" class="icon"
               ><i class="fa-brands fa-google-plus-g"></i
@@ -55,26 +53,26 @@
             ></a>
           </div>
           <span>or use your email password?</span>
-          <input type="email" placeholder="Email" class='login_email'/>
-          <input type="password" placeholder="Password" class='login_password'/>
+          <input type="email" placeholder="Email" class='sign-in_email'/>
+          <input type="password" placeholder="Password" class='sign-in_password'/>
 					<a href="#">Forget Your Password</a>
-					<button class='SignInButton'>Sign In</button>
-          <div class='create'>Create Account</div>
-          <button class='nonebtn' id='nonebtn'>Sign Up</button>
+					<button class='sign-in_button'>Sign In</button>
+          <div class='sub_title'>Create Account</div>
+          <button class='sign-up_remove' >Sign Up</button>
         </form>
       </div>
+      
 			<div class="toggle-container">
 				<div class="toggle">
 					<div class="toggle-panel toggle-left">
 						<h1>Welcome Back</h1>
             <p>Enter your pesonal details to use all of site features</p>
-            <button class='hidden' id='login'>Sign In</button>
+            <button class='hidden sign-in_toggle_btn' >Sign In</button>
 					</div>
           <div class="toggle-panel toggle-right">
 						<h1>Hello, Friend</h1>
             <p>Register with your  personal details to use all of site features</p>
-            <button class='hidden' id='register'>Sign Up</button>
-            
+            <button class='hidden sign-up_toggle_btn'>Sign Up</button>
 					</div>
 				</div>
 			</div>

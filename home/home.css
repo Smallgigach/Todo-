@@ -3,11 +3,24 @@
   padding: 0;
   margin: 0;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 body {
   background: radial-gradient(circle at 18.7% 37.8%, rgb(152, 123, 255) 0%, rgb(225, 234, 238) 90%);
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: "Raleway", sans-serif;
+}
+
+
+h1 {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  width: 100%;
+
 }
 
 .container {
@@ -20,6 +33,10 @@ body {
   min-height: 100dvh;
 }
 
+.title {
+  margin: 10px 0px;
+
+}
 .submit {
   font-size: 15px;
   cursor: pointer;
@@ -36,14 +53,34 @@ body {
   max-width: 300px; 
   width: 60%;
   font-size: 16px;
+  transition: width 1s ease;
+}
+.inputAdd {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #222;
+  max-width: 300px; 
+  font-size: 16px;
+  width: 60%;
+}
+
+
+.inputAdd:focus {
+  width: 90%;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .input-wrapper {
   align-items: center;
-  margin: 10px 0;
   display: flex;
   align-items: center;
   gap: 5px;
+
 }
 
 .delete-button, .save-button {
@@ -93,6 +130,7 @@ input[type=checkbox] {
 @media (max-width: 350px) {
   .container {
     padding: 15px ;
+      min-height: calc(100dvh - 30px);
   }
   
 }

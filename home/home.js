@@ -1,14 +1,16 @@
 
 const submit = document.querySelector(".submit");
 const inputField = document.querySelector(".input");
-const container = document.getElementById("inputs-container");
-const urlParams = new URLSearchParams(window.location.search);
-const userId = urlParams.get("id");
+const container = document.querySelector(".inputs-container");
+const token = localStorage.getItem("token");
+
+console.log(token);
+const serverLink = 'https://todo.s7b0t4-website-server.ru/';
 
 function getAllTask() {
   axios
-    .post("https://todo.s7b0t4-website-server.ru/task/get", {
-      userId: userId,
+    .post(serverLink + "task/get", {
+      token: token,
     })
     .then((response) => {
       renderAllTask(response.data);
@@ -25,14 +27,17 @@ function addInput(text, id, bool) {
   
   input.type = "text";
   input.value = text;
-  input.classList.add("input"); 
+  input.classList.add("inputAdd"); 
+  input.style.backgroundColor = '#d3d3d3';
+  
+ 
 
   const deleteButton = document.createElement("button");
   deleteButton.innerHTML = "<i class='fa-solid fa-trash'></i>"; 
   deleteButton.classList.toggle("delete-button"); 
   deleteButton.addEventListener("click", () => {
-    axios.post('https://todo.s7b0t4-website-server.ru/task/delete', {
-      "userId": userId,
+    axios.post(serverLink + 'task/delete', {
+      "token": token,
       "taskId": id
     }).then((response) => {
       console.log(response, 'Удалено');
@@ -48,8 +53,8 @@ function addInput(text, id, bool) {
   saveButton.classList.add("save-button");
   saveButton.addEventListener("click", () => {
     axios
-      .post("https://todo.s7b0t4-website-server.ru/task/change", {
-        userId: userId,
+      .post(serverLink +  "task/change", {
+        token: token,
         text: input.value,
         taskId: id,
       })
@@ -66,9 +71,9 @@ function addInput(text, id, bool) {
   completed.classList.add("checkbox");
   completed.addEventListener("change", (e) => {
     axios
-      .post("https://todo.s7b0t4-website-server.ru/task/switch", {
+      .post(serverLink + "task/switch", {
         taskId: id,
-        userId: userId,
+        token: token,
         switch: completed.checked,
       })
       .then((response) => {
@@ -94,7 +99,6 @@ function renderAllTask(data) {
     addInput(element.text, element.id, element.switch);
   });
 }
-console.log(`userId: ${userId}`);
 submit.addEventListener("click", handlerClick);
 inputField.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
@@ -107,9 +111,9 @@ function handlerClick() {
 
   if (inputValue) {
     axios
-      .post("https://todo.s7b0t4-website-server.ru/task/create", {
+      .post(serverLink + "task/create", {
         text: inputValue,
-        userId: userId,
+        token: token,
       })
       .then((response) => {
         console.log(response);

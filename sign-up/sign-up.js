@@ -1,57 +1,69 @@
-const container = document.getElementById("container");
-const registerBtn = document.getElementById("register");
-const reg = document.getElementById("reg");
-const loginBtn = document.getElementById("login");
-const SignInButton = document.querySelector(".SignInButton");
-const logInputEmail = document.querySelector(".login_email");
-const logInputPassword = document.querySelector(".login_password");
+const container = document.querySelector(".container");
+const signUpTransitToSignUpToReg = document.querySelector(".sign-up_toggle_btn");
+const SignUpButton = document.querySelector(".sign-up_button");
 
-const regInputName = document.querySelector(".name");
-const regInputEmail = document.querySelector(".email");
-const regInputPassw = document.querySelector(".password");
-const nonebtn = document.getElementById("nonebtn");
-const auth = document.querySelector(".auth");
+const SignInTransitToSignInToAuth = document.querySelector(".sign-in_toggle_btn");
+const SignInButton = document.querySelector(".sign-in_button");
+const SignInToEmail= document.querySelector(".sign-in_email");
+const SignInToPassword = document.querySelector(".sign-in_password");
 
-registerBtn.addEventListener("click", () => {
+const SignUpToName = document.querySelector(".sign-up_name");
+const SignUpToEmail = document.querySelector(".sign-up_email");
+const SignUpToPassword = document.querySelector(".sign-up_password");
+const SignUpToAdaptive = document.querySelector(".sign-up_remove");
+const SignInToAdaptive = document.querySelector(".sing-in_remove");
+const serverLink = 'https://todo.s7b0t4-website-server.ru/';
+signUpTransitToSignUpToReg.addEventListener("click", () => {
   container.classList.add("active");
 });
-
-loginBtn.addEventListener("click", () => {
+SignInTransitToSignInToAuth.addEventListener("click", () => {
   container.classList.remove("active");
 });
+
 SignInButton.addEventListener("click", SignInUser);
-reg.addEventListener("click", SignUpUser);
+SignUpButton.addEventListener("click", SignUpUser);
+
+SignInButton.addEventListener('keypress', (e) => {
+  if (e.key === "Enter") {
+    SignInUser();
+  }
+})
 function SignInUser(e) {
   e.preventDefault();
   axios
-    .post("https://todo.s7b0t4-website-server.ru/auth/signIn", {
-      email: logInputEmail.value,
-      password: logInputPassword.value,
+    .post(serverLink + "auth/signIn", {
+      email: SignInToEmail.value,
+      password: SignInToPassword.value,
     })
-    .then((response) => {
-      window.location = `http://127.0.0.1:5500/home/home.html?id=${response.data.id}`;
+    .then (async(response) => {
+      await localStorage.clear()
+      await localStorage.setItem('token', response.data.token)
+      window.location = `http://127.0.0.1:5500/home/home.html`;
     })
     .catch((err) => {
       console.log(err);
     });
-}
-reg.addEventListener("keypress", (e) => {
+} 
+
+SignUpButton.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     SignUpUser();
   }
 });
+
 function SignUpUser(e) {
   e.preventDefault();
   axios
-    .post("https://todo.s7b0t4-website-server.ru/auth/signUp", {
-      name: regInputName.value,
-      email: regInputEmail.value,
-      password: regInputPassw.value,
+    .post(serverLink + "auth/signUp", {
+      name: SignUpToName.value,
+      email: SignUpToEmail.value,
+      password: SignUpToPassword.value,
     })
-    .then((response) => {
-      console.log(response.data.id);
-      if (response.data.userId) {
-        window.location = `http://127.0.0.1:5500/home/home.html?id=${response.data.id}`;
+    .then(async(response) => {
+      await localStorage.clear()
+      await localStorage.setItem('token', response.data.token)
+      if (response.data.id) {
+        window.location = `http://127.0.0.1:5500/home/home.html`;
       }
       console.error('Не верный аккаунт');
     })
@@ -59,11 +71,13 @@ function SignUpUser(e) {
       console.log(error);
     });
 }
-nonebtn.addEventListener("click", (e) => {
+
+SignUpToAdaptive.addEventListener("click", (e) => {
   e.preventDefault();
   container.classList.add("active");
 });
-auth.addEventListener("click", (e) => {
+
+SignInToAdaptive.addEventListener("click", (e) => {
   e.preventDefault();
   container.classList.remove("active");
 });
