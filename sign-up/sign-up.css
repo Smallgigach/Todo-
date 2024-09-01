@@ -25,7 +25,7 @@ body{
   position: relative;
  width: 768px;
   max-width: 100%;
-  min-height: 480px;
+  min-height: 490px;
   overflow: hidden;
 }
 
@@ -227,13 +227,22 @@ body{
   margin-bottom: 0px;
   display: none;
 }
+.error {
+  color: red;
+  font-size: smaller;
+ 
+}
+.errortwo {
+  color: red;
+  font-size: smaller;
+}
 @media  (max-width: 770px){
   body {
     margin-left: 15px;
     margin-right: 15px;
   }
 }
-@media  (max-width: 568px){
+@media  (max-width: 572px){
   body {
     margin-left: 15px;
     margin-right: 15px;
@@ -248,6 +257,7 @@ body{
   }
   .sign-up {
     width: 100%;
+    
   }
   .sign-up_remove {
     display: flex;
@@ -276,15 +286,34 @@ body{
     opacity: 1;
     z-index: 5;
     animation: move 0.6s;
+    height: 480px;
 }
 .create-acc_title {
-  text-align: center;
+  padding-top: 15px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+       display: flex;
+       font-size: 25px;
 }
 .sign-in_title {
   text-align: center;
+  font-size: 25px;
 }
 .sing-in_remove {
   display: block;
 }
 
+}
+@media (max-width:320px) {
+  .form-container .sign-up {
+    width: 100%;
+    height: 491px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+  }
 }

@@ -31,10 +31,12 @@
               ><i class="fa-brands fa-linkedin-in"></i
             ></a>
           </div>
-          <span>or use your email for registration</span>
-          <input type="text" placeholder="Name" class='sign-up_name' required/>
-          <input type="email" placeholder="Email" class='sign-up_email' />
+          <span class='titleToSignUp'>or use your email for registration</span>
+          <div class='error'></div>
+          <input type="text" placeholder="Name" class='sign-up_name' required />
+          <input type="email" placeholder="Email" class='sign-up_email' required/>
           <input type="password" placeholder="Password"  class='sign-up_password' required/>
+          <input type="password" placeholder='Repeat password' class='sign-up_repeat_password'>
 					<button  class='sign-up_button'>Sign Up</button>
           <button class='sing-in_remove'>Sign In</button>
         </form>
@@ -52,7 +54,8 @@
               ><i class="fa-brands fa-linkedin-in"></i
             ></a>
           </div>
-          <span>or use your email password?</span>
+          <span class='title-to-sign-in'>or use your email password?</span>
+          <div class='errortwo'></div>
           <input type="email" placeholder="Email" class='sign-in_email'/>
           <input type="password" placeholder="Password" class='sign-in_password'/>
 					<a href="#">Forget Your Password</a>
