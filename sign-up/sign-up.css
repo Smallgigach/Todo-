@@ -230,11 +230,13 @@ body{
 .error {
   color: red;
   font-size: smaller;
+  text-align: center;
  
 }
 .errortwo {
   color: red;
   font-size: smaller;
+  text-align: center;
 }
 @media  (max-width: 770px){
   body {

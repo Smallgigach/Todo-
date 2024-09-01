@@ -50,7 +50,8 @@ function SignInUser(e) {
       console.log(err.response.data.message);   
       errortwo.style.display = 'flex'
       titleToSignIn.style.display = 'none'
-      errortwo.textContent = err.response.data.message;
+      errortwo.innerHTML = err.response.data.message.join('<br/>');
+      
     });
 }
 
@@ -85,7 +86,7 @@ function SignUpUser(e) {
       console.log(err.response.data.message);   
       error.style.display = 'flex'
       titleToSignUp.style.display = 'none'
-      error.textContent = err.response.data.message;
+      error.innerHTML = err.response.data.message.join('<br/>');
     });
 }
 
