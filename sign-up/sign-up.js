@@ -60,6 +60,13 @@ function SignUpUser(e) {
     titleToSignUp.style.display = 'none'
     controller.abort()
   }
+  if(SignUpToPassword.value !== SignUpToRepeatToPassword.value) {
+    SignUpToPassword.value = '';
+    SignUpToRepeatToPassword.value = '';
+    error.textContent = 'проверьте правильность пароля';
+    titleToSignUp.style.display = 'none'
+    controller.abort()
+  }
   e.preventDefault();
   axios
     .post(serverLink + "auth/signUp", {
