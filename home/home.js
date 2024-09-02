@@ -35,23 +35,26 @@ function addInput(text, id, bool) {
   const deleteButton = document.createElement("button");
   deleteButton.innerHTML = "<i class='fa-solid fa-trash'></i>"; 
   deleteButton.classList.toggle("delete-button"); 
-  deleteButton.addEventListener("click", () => {
-    axios.post(serverLink + 'task/delete', {
-      "token": token,
-      "taskId": id
-    }).then((response) => {
-      console.log(response, 'Удалено');
-      
-    }).catch((err) => {
-      console.log(err);
-      
-    })
-    container.removeChild(inputWrapper); 
-  });
+  deleteButton.addEventListener("click", deleteTasks);
+  function deleteTasks() {
+      axios.post(serverLink + 'task/delete', {
+        "token": token,
+        "taskId": id
+      }).then((response) => {
+        console.log(response, 'Удалено');
+        
+      }).catch((err) => {
+        console.log(err);
+        
+      })
+      container.removeChild(inputWrapper); 
+    
+  }
   const saveButton = document.createElement("button");
   saveButton.innerHTML = "<i class='fa-solid fa-pen-to-square'></i>";
   saveButton.classList.add("save-button");
-  saveButton.addEventListener("click", () => {
+  saveButton.addEventListener("click", saveTasks);
+  function saveTasks() {
     axios
       .post(serverLink +  "task/change", {
         token: token,
@@ -64,12 +67,14 @@ function addInput(text, id, bool) {
       .catch((err) => {
         console.log(err);
       });
-  });
+
+  }
   const completed = document.createElement("input");
   completed.type = "checkbox";
   completed.checked = bool;
   completed.classList.add("checkbox");
-  completed.addEventListener("change", (e) => {
+  completed.addEventListener("change", switchTasks);
+  function switchTasks() {
     axios
       .post(serverLink + "task/switch", {
         taskId: id,
@@ -82,7 +87,7 @@ function addInput(text, id, bool) {
       .catch((err) => {
         console.log(err);
       });
-  });
+  }
   inputWrapper.appendChild(input);
   inputWrapper.appendChild(deleteButton);
   inputWrapper.appendChild(saveButton); // Добавляем кнопку сохранения
