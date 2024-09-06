@@ -1,11 +1,18 @@
-
 const submit = document.querySelector(".submit");
 const inputField = document.querySelector(".input");
 const container = document.querySelector(".inputs-container");
-const token = localStorage.getItem("token");
+let token = null;
+let params = new URLSearchParams(document.location.search);
+const newParams = params.get("token");
 
-console.log(token);
-const serverLink = 'https://todo.s7b0t4-website-server.ru/';
+if (newParams) {
+  token = newParams;
+  localStorage.clear();
+  localStorage.setItem("token", token);
+} else {
+  token = localStorage.getItem("token");
+}
+const serverLink = "https://todo.s7b0t4-website-server.ru/";
 
 function getAllTask() {
   axios
@@ -21,34 +28,32 @@ function getAllTask() {
 }
 function addInput(text, id, bool) {
   const inputWrapper = document.createElement("div");
-  inputWrapper.classList.toggle("input-wrapper"); 
+  inputWrapper.classList.toggle("input-wrapper");
   inputWrapper.key = id;
   const input = document.createElement("input");
-  
+
   input.type = "text";
   input.value = text;
-  input.classList.add("inputAdd"); 
-  input.style.backgroundColor = '#d3d3d3';
-  
- 
+  input.classList.add("inputAdd");
+  input.style.backgroundColor = "#d3d3d3";
 
   const deleteButton = document.createElement("button");
-  deleteButton.innerHTML = "<i class='fa-solid fa-trash'></i>"; 
-  deleteButton.classList.toggle("delete-button"); 
+  deleteButton.innerHTML = "<i class='fa-solid fa-trash'></i>";
+  deleteButton.classList.toggle("delete-button");
   deleteButton.addEventListener("click", deleteTasks);
   function deleteTasks() {
-      axios.post(serverLink + 'task/delete', {
-        "token": token,
-        "taskId": id
-      }).then((response) => {
-        console.log(response, 'Удалено');
-        
-      }).catch((err) => {
-        console.log(err);
-        
+    axios
+      .post(serverLink + "task/delete", {
+        token: token,
+        taskId: id,
       })
-      container.removeChild(inputWrapper); 
-    
+      .then((response) => {
+        console.log(response, "Удалено");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    container.removeChild(inputWrapper);
   }
   const saveButton = document.createElement("button");
   saveButton.innerHTML = "<i class='fa-solid fa-pen-to-square'></i>";
@@ -56,7 +61,7 @@ function addInput(text, id, bool) {
   saveButton.addEventListener("click", saveTasks);
   function saveTasks() {
     axios
-      .post(serverLink +  "task/change", {
+      .post(serverLink + "task/change", {
         token: token,
         text: input.value,
         taskId: id,
@@ -67,7 +72,6 @@ function addInput(text, id, bool) {
       .catch((err) => {
         console.log(err);
       });
-
   }
   const completed = document.createElement("input");
   completed.type = "checkbox";
